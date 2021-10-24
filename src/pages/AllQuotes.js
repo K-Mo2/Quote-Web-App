@@ -1,9 +1,11 @@
 import React from "react";
+import QuoteList from "../components/quotes/QuoteList";
 
-export default function AllQuotes() {
+
+export default function AllQuotes(props) {
   return (
     <div>
-      <h1>AllQuotes</h1>
+      <QuoteList quotes={props.quotes} />
     </div>
   );
 }

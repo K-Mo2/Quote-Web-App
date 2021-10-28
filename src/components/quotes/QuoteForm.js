@@ -9,7 +9,7 @@ const QuoteForm = (props) => {
   const authorInputRef = useRef();
   const textInputRef = useRef();
   const [inputIsValid, setInputIsValid] = useState(true);
-
+  const [inputTouched, setInputTouched] = useState(false);
   function submitFormHandler(event) {
     event.preventDefault();
 
@@ -17,23 +17,35 @@ const QuoteForm = (props) => {
     const enteredText = textInputRef.current.value;
 
     // optional: Could validate here
+    if (!enteredAuthor || !enteredText) {
+      setInputIsValid(false);
+      return;
+    }
 
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
 
   const inputBlurHandler = (event) => {
-    if (event.target.value.trim() === "") {
+    if (event.target.value.trim() === "" && inputTouched) {
       setInputIsValid(false);
     }
   };
+  const inputFocusHandler = function () {
+    setInputTouched(true);
+    setInputIsValid(true);
+  };
+
   return (
     <Fragment>
       <Prompt
-        when={!inputIsValid}
+        when={inputTouched && !inputIsValid}
         message="Are you sure you want to leave this page"
       />
       <Card>
-        <form className={classes.form} onSubmit={submitFormHandler}>
+        <form
+          className={classes.form}
+          onSubmit={inputIsValid ? submitFormHandler : null}
+        >
           {props.isLoading && (
             <div className={classes.loading}>
               <LoadingSpinner />
@@ -47,6 +59,7 @@ const QuoteForm = (props) => {
               id="author"
               ref={authorInputRef}
               onBlur={inputBlurHandler}
+              onFocus={inputFocusHandler}
             />
           </div>
           <div className={classes.control}>
@@ -56,11 +69,13 @@ const QuoteForm = (props) => {
               rows="5"
               ref={textInputRef}
               onBlur={inputBlurHandler}
+              onFocus={inputFocusHandler}
             ></textarea>
           </div>
           <div className={classes.actions}>
             <button className="btn">Add Quote</button>
           </div>
+          {!inputIsValid && <h3>Please enter a valid input</h3>}
         </form>
       </Card>
     </Fragment>

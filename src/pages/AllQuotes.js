@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+
 import QuoteList from "../components/quotes/QuoteList";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
+import NoQuotesFound from "../components/quotes/NoQuotesFound";
 import useHttp from "../components/hooks/use-http";
 import { getAllQuotes } from "../components/lib/api";
-import NoQuotesFound from "../components/quotes/NoQuotesFound";
 
-export default function AllQuotes(props) {
+const AllQuotes = () => {
   const {
     sendRequest,
     status,
@@ -14,12 +15,12 @@ export default function AllQuotes(props) {
   } = useHttp(getAllQuotes, true);
 
   useEffect(() => {
-    sendRequest(getAllQuotes);
+    sendRequest();
   }, [sendRequest]);
 
   if (status === "pending") {
     return (
-      <div className="" centered>
+      <div className="centered">
         <LoadingSpinner />
       </div>
     );
@@ -29,12 +30,11 @@ export default function AllQuotes(props) {
     return <p className="centered focused">{error}</p>;
   }
 
-  if ((status === "completed" && !loadedQuotes) || loadedQuotes.length === 0) {
+  if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
     return <NoQuotesFound />;
   }
-  return (
-    <div>
-      <QuoteList quotes={loadedQuotes} />
-    </div>
-  );
-}
+
+  return <QuoteList quotes={loadedQuotes} />;
+};
+
+export default AllQuotes;

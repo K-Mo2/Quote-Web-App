@@ -1,22 +1,23 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
+
 import AllQuotes from "./pages/AllQuotes";
+import QuoteDetail from "./pages/QuoteDetail";
 import NewQuote from "./pages/NewQuote";
-import QuoteDetails from "./pages/QuoteDetails";
-import Layout from "./components/layout/Layout";
 import NotFound from "./pages/NotFound";
-const DUMMY_QUOTES = [
-  { id: "q1", author: "Well Smith", text: "Learning is fun." },
-  { id: "q2", author: "John Doe", text: "React is a great framework." },
-];
+import Layout from "./components/layout/Layout";
+
 function App() {
   return (
     <Layout>
       <Switch>
+        <Route path="/" exact>
+          <Redirect to="/quotes" />
+        </Route>
         <Route path="/quotes" exact>
-          <AllQuotes quotes={DUMMY_QUOTES} />
+          <AllQuotes />
         </Route>
         <Route path="/quotes/:quoteId">
-          <QuoteDetails quotes={DUMMY_QUOTES} />
+          <QuoteDetail />
         </Route>
         <Route path="/newQuote">
           <NewQuote />

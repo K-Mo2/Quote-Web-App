@@ -10,6 +10,10 @@ const QuoteForm = (props) => {
   const textInputRef = useRef();
   const [inputIsValid, setInputIsValid] = useState(true);
   const [inputTouched, setInputTouched] = useState(false);
+  const invalidInputStyles =
+    (inputTouched && !inputIsValid) || !inputIsValid
+      ? classes.invalidInput
+      : "";
   function submitFormHandler(event) {
     event.preventDefault();
 
@@ -26,6 +30,7 @@ const QuoteForm = (props) => {
   }
 
   const inputBlurHandler = (event) => {
+    setInputTouched(true);
     if (event.target.value.trim() === "" && inputTouched) {
       setInputIsValid(false);
     }
@@ -60,6 +65,7 @@ const QuoteForm = (props) => {
               ref={authorInputRef}
               onBlur={inputBlurHandler}
               onFocus={inputFocusHandler}
+              className={invalidInputStyles}
             />
           </div>
           <div className={classes.control}>
@@ -70,6 +76,7 @@ const QuoteForm = (props) => {
               ref={textInputRef}
               onBlur={inputBlurHandler}
               onFocus={inputFocusHandler}
+              className={invalidInputStyles}
             ></textarea>
           </div>
           <div className={classes.actions}>

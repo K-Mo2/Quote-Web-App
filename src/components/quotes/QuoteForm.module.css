@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.invalidInput {
+  outline: 1px solid rgb(255, 0, 0);
+}
+
 .control {
   margin-bottom: 0.5rem;
 }

@@ -14,6 +14,7 @@ const QuoteForm = (props) => {
     (inputTouched && !inputIsValid) || !inputIsValid
       ? classes.invalidInput
       : "";
+
   function submitFormHandler(event) {
     event.preventDefault();
 

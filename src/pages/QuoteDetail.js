@@ -56,7 +56,7 @@ export default function QuoteDetails({ quotes }) {
         )}
       </Route>
       <Route path={`${match.path}/comments`} exact>
-        <Comments />
+        <Comments quoteId={quoteId} />
       </Route>
     </div>
   );

@@ -1,7 +1,10 @@
 ### Table of content
 
-_[Overview](#overview)
-_[Technologies used](#technologies-used) \*[Launch method](launch-method)
+*[Overview](#overview)
+
+*[Technologies used](#technologies-used) 
+
+*[Launch method](launch-method)
 
 ## Quote-Web-App
 

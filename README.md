@@ -4,7 +4,9 @@
 
 *[Technologies used](#technologies-used) 
 
-*[Launch method](launch-method)
+*[Skills practised](#skills-practised)
+
+*[Launch method](#launch-method)
 
 ## Quote-Web-App
 

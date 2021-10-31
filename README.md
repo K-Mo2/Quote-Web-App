@@ -28,7 +28,7 @@ In this app you can post quotes with their authors and comment on each post, you
 
 6- Firebase
 
-### Skills practised in this project:
+### Skills practised
 
 1- Routin, nested routing, and protected routing.
 

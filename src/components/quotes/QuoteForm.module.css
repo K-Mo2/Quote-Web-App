@@ -49,5 +49,11 @@
 }
 
 .actions button {
-  font-size: 1.25rem;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .actions button {
+    font-size: 17px;
+  }
 }

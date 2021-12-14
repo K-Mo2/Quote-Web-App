@@ -35,3 +35,15 @@
   font-style: italic;
   color: #566d6d;
 }
+
+.delete {
+  width: 2.5vw;
+  height: 4.5vh;
+  display: flex;
+  position: relative;
+  top: -8vh;
+  left: 1vw;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

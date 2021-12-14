@@ -1,4 +1,4 @@
-const FIREBASE_DOMAIN = "https://fir-72c12-default-rtdb.firebaseio.com";
+const FIREBASE_DOMAIN = process.env.REACT_APP_FIREBASE_API;
 
 export async function getAllQuotes() {
   const response = await fetch(`${FIREBASE_DOMAIN}/quotes.json`);
@@ -96,4 +96,16 @@ export async function getAllComments(quoteId) {
   }
 
   return transformedComments;
+}
+
+export async function deleteSingleQuote(quoteId) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/quotes/${quoteId}/.json`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "An Error Has Occured");
+  }
 }

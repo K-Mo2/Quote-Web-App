@@ -14,7 +14,7 @@ React Web App for Quotes.
 
 # Overview
 
-In this app you can post quotes with their authors and comment on each post, you can also see quotes and comments from other people on each quote, a sigle quote can have many comments and you can visit every quote's post to comment or see others' comments on it.
+In this app you can post quotes with their authors and comment on each post, you can also see quotes and comments from other people on each quote, a single quote can have many comments and you can visit every quote's post to comment or see others' comments on it.
 
 ## Technologies used
 
